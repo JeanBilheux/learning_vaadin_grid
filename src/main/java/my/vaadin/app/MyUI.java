@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.servlet.annotation.WebServlet;
 
-import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.Title;
 import com.vaadin.annotations.VaadinServletConfiguration;
 import com.vaadin.icons.VaadinIcons;
@@ -13,10 +12,12 @@ import com.vaadin.server.VaadinServlet;
 import com.vaadin.shared.ui.ValueChangeMode;
 import com.vaadin.spring.annotation.SpringUI;
 import com.vaadin.ui.Button;
+import com.vaadin.ui.CssLayout;
 import com.vaadin.ui.Grid;
 import com.vaadin.ui.TextField;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
+import com.vaadin.ui.themes.ValoTheme;
 
 /**
  * This UI is the application entry point. A UI may either represent a browser
@@ -27,7 +28,7 @@ import com.vaadin.ui.VerticalLayout;
  * intended to be overridden to add component to the user interface and
  * initialize non-component functionality.
  */
-@Theme("mytheme")
+//@Theme("mytheme")
 @SpringUI
 @Title("this is my demo")
 public class MyUI extends UI {
@@ -40,8 +41,8 @@ public class MyUI extends UI {
 	protected void init(VaadinRequest vaadinRequest) {
 		final VerticalLayout layout = new VerticalLayout();
 
-		filterText.setCaption("Filter by name...");
-//		filterText.setPlaceholder("This is the placeholder");
+//		filterText.setCaption("Filter by name...");
+//		filterText.setPlaceholder("filter text");
 		filterText.addValueChangeListener(e -> updateList());
 		filterText.setValueChangeMode(ValueChangeMode.LAZY);
 
@@ -49,7 +50,11 @@ public class MyUI extends UI {
 		clearFilterTextBtn.setDescription("Clear the current filter");
 		clearFilterTextBtn.addClickListener(e->filterText.clear());
 		
-		layout.addComponents(grid);
+		CssLayout filtering = new CssLayout();
+		filtering.addComponents(filterText, clearFilterTextBtn);
+		filtering.setStyleName(ValoTheme.LAYOUT_COMPONENT_GROUP);
+		
+		layout.addComponents(filtering, grid);
 		updateList();
 		setContent(layout);
 	}
