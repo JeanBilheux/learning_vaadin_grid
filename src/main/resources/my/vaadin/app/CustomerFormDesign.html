@@ -7,21 +7,17 @@
  </head>
  <body>
   <vaadin-form-layout size-full>
-   <vaadin-text-field caption="Last Name" _id="lastName"></vaadin-text-field>
-   <vaadin-text-field></vaadin-text-field>
-   <vaadin-text-field></vaadin-text-field>
-   <vaadin-native-select data-item-type="java.lang.String">
-    <option item="Option1">Option 1</option>
-    <option item="Option2">Option 2</option>
-    <option item="Option3">Option 3</option>
-   </vaadin-native-select>
-   <vaadin-date-field></vaadin-date-field>
+   <vaadin-text-field caption="First name" _id="firstName"></vaadin-text-field>
+   <vaadin-text-field caption="Last name" _id="lastName"></vaadin-text-field>
+   <vaadin-text-field caption="Email" _id="email"></vaadin-text-field>
+   <vaadin-native-select caption="Status" data-item-type="my.vaadin.app.CustomerStatus" _id="status"></vaadin-native-select>
+   <vaadin-date-field caption="Birthday" _id="birthdate"></vaadin-date-field>
    <vaadin-horizontal-layout>
-    <vaadin-button plain-text>
-      Button 
+    <vaadin-button style-name="primary" plain-text _id="save">
+      Save 
     </vaadin-button>
-    <vaadin-button plain-text>
-      Button 
+    <vaadin-button plain-text _id="delete">
+      Delete 
     </vaadin-button>
    </vaadin-horizontal-layout>
   </vaadin-form-layout>
